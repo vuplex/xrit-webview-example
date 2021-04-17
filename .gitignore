@@ -73,3 +73,5 @@ crashlytics-build.properties
 
 .vscode
 .DS_Store
+Assets/Vuplex*
+Assets/Plugins*
