@@ -12,6 +12,7 @@ class XritWebViewDemo : MonoBehaviour {
         // Create a CanvasWebViewPrefab
         // https://developer.vuplex.com/webview/CanvasWebViewPrefab
         _canvasWebViewPrefab = CanvasWebViewPrefab.Instantiate();
+        _canvasWebViewPrefab.NativeOnScreenKeyboardEnabled = false;
         _canvasWebViewPrefab.transform.SetParent(canvas.transform, false);
         _canvasWebViewPrefab.Initialized += (sender, eventArgs) => {
             _canvasWebViewPrefab.WebView.LoadUrl("https://google.com");
@@ -23,7 +24,7 @@ class XritWebViewDemo : MonoBehaviour {
         _keyboard.transform.SetParent(canvas.transform, false);
         // Hook up the keyboard so that characters are routed to the CanvasWebViewPrefab.
         _keyboard.InputReceived += (sender, eventArgs) => {
-            _canvasWebViewPrefab.WebView.HandleKeyboardInput(eventArgs.Value);
+            _canvasWebViewPrefab.WebView.SendKey(eventArgs.Value);
         };
 
         _positionPrefabs();
