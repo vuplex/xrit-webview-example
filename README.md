@@ -8,9 +8,9 @@ This Unity project demonstrates how to use [Vuplex 3D WebView](https://developer
 
 ## Steps taken to create this project
 
-1. Created a new project with Unity 2020.3.3.
+1. Created a new project with Unity 2020.3.24.
 2. Installed the following packages through the Package Manager:
-- XR Interaction Toolkit
+- XR Interaction Toolkit (v2.1.1)
 - XR Management
 - Oculus XR Plugin
 3. Installed 3D WebView (omitted via [.gitignore](./.gitignore))

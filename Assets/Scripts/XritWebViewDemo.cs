@@ -8,6 +8,10 @@ class XritWebViewDemo : MonoBehaviour {
 
     void Start() {
 
+        // Use a desktop User-Agent to request the desktop versions of websites.
+        // https://developer.vuplex.com/webview/Web#SetUserAgent
+        Web.SetUserAgent(false);
+
         var canvas = GameObject.Find("Canvas");
         // Create a CanvasWebViewPrefab
         // https://developer.vuplex.com/webview/CanvasWebViewPrefab
