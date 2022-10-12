@@ -6,7 +6,7 @@ class XritWebViewDemo : MonoBehaviour {
     CanvasWebViewPrefab _canvasWebViewPrefab;
     CanvasKeyboard _keyboard;
 
-    void Start() {
+    async void Start() {
 
         // Use a desktop User-Agent to request the desktop versions of websites.
         // https://developer.vuplex.com/webview/Web#SetUserAgent
@@ -18,20 +18,21 @@ class XritWebViewDemo : MonoBehaviour {
         _canvasWebViewPrefab = CanvasWebViewPrefab.Instantiate();
         _canvasWebViewPrefab.NativeOnScreenKeyboardEnabled = false;
         _canvasWebViewPrefab.transform.SetParent(canvas.transform, false);
-        _canvasWebViewPrefab.Initialized += (sender, eventArgs) => {
-            _canvasWebViewPrefab.WebView.LoadUrl("https://google.com");
-        };
 
         // Create a CanvasKeyboard
         // https://developer.vuplex.com/webview/CanvasKeyboard
         _keyboard = CanvasKeyboard.Instantiate();
         _keyboard.transform.SetParent(canvas.transform, false);
-        // Hook up the keyboard so that characters are routed to the CanvasWebViewPrefab.
-        _keyboard.InputReceived += (sender, eventArgs) => {
-            _canvasWebViewPrefab.WebView.SendKey(eventArgs.Value);
-        };
 
         _positionPrefabs();
+
+        // Wait for the prefab to initialize because its WebView property is null until then.
+        // https://developer.vuplex.com/webview/WebViewPrefab#WaitUntilInitialized
+        await _canvasWebViewPrefab.WaitUntilInitialized();
+
+        // After the prefab has initialized, you can use the IWebView APIs via its WebView property.
+        // https://developer.vuplex.com/webview/IWebView
+        _canvasWebViewPrefab.WebView.LoadUrl("https://google.com");
     }
 
     /// <summary>
