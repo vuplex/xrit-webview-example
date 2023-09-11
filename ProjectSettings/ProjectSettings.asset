@@ -693,7 +693,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    7: VUPLEX_CCU;VUPLEX_STANDALONE;VUPLEX_XR_INTERACTION_TOOLKIT;VUPLEX_OCULUS
+    7: VUPLEX_XR_INTERACTION_TOOLKIT
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
